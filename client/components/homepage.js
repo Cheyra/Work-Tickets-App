@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Button, NavItem, Row, Col, Textarea } from "react-materialize";
+import { Button, NavItem, Row, Textarea } from "react-materialize";
 
 
 class Homepage extends React.Component {

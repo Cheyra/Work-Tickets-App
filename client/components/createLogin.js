@@ -1,8 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Button, Row, Col, Select, Textarea } from "react-materialize";
+import { Button, Textarea } from "react-materialize";
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 class createLogin extends React.Component {
@@ -16,6 +15,7 @@ class createLogin extends React.Component {
             info: ""
 
         };
+
         // biding this to functions
 
         this.registerEmployee = this.registerEmployee.bind(this);
@@ -90,9 +90,7 @@ class createLogin extends React.Component {
 
         return (
             <div>
-                {/* <Textarea id="facility" name="facility" value={this.state.facility} onChange={this.handleTextChange} label="Please enter your facility" /> */}
                 <Dropdown options={this.state.options} onChange={this._onSelect}  placeholder="Select an option" />
-
                 <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
                 <Textarea id="password" name="password" value={this.state.password} onChange={this.handleTextChange} label="Please set a password" />
                 <Button value={this.state.id} onClick={this.registerEmployee}>

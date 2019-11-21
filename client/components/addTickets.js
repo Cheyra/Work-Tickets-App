@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Button, Row, Col, Select, RadioGroup, Textarea } from "react-materialize";
+import { Button, Textarea } from "react-materialize";
 var querystring = require('querystring');
 class AddTickets extends React.Component {
   constructor() {
