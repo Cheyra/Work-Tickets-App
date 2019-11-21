@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Button, Row, Col, Select, RadioGroup, Textarea } from "react-materialize";
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
 var querystring = require('querystring');
 class AddEmployee extends React.Component {
     constructor() {
@@ -13,10 +15,13 @@ class AddEmployee extends React.Component {
             employeeID: '',
             admin: true,
             messageFromServer: '',
+            facility: "",
+            options: ["WDH", "Administrator", "MGH", "Brigham"]
 
         }
         this.onClick = this.onClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
+        this._onSelect = this._onSelect.bind(this);
     }
     // runs when page loads
     componentDidMount() {
@@ -82,7 +87,12 @@ class AddEmployee extends React.Component {
 
         console.log(this.state.first + this.state.last)
     }
-
+    _onSelect(e) {
+        // console.log(e.target.value)
+        console.log("clicked")
+        console.log(e.value)
+        this.setState({facility: e.value})
+            }
 
     // renders info to web page
     render() {
@@ -96,6 +106,8 @@ class AddEmployee extends React.Component {
                     <label >First Name:</label><input type="text" id="first" name="first" value={this.state.first} onChange={this.handleTextChange}></input>
                     <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
                     <Textarea id="facility" name="facility" value={this.state.facility} onChange={this.handleTextChange} label="Please enter a the facility Name" />
+                    <Dropdown options={this.state.options} onChange={this._onSelect}  placeholder="Select an option" />
+
                     <Button onClick={this.onClick}><a href="/#/homepage">Add New Employee</a></Button>
 
 

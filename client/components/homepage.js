@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { Button, NavItem, Row, Col, Textarea } from "react-materialize";
 
+
 class Homepage extends React.Component {
     constructor(props) {
         super();
@@ -12,8 +13,8 @@ class Homepage extends React.Component {
             password: "",
             info: "",
             loggedInEmployee: '',
-            admin: ""
-
+            admin: "",
+        
         }
 
         this.onClick = this.onClick.bind(this);
@@ -23,8 +24,8 @@ class Homepage extends React.Component {
     // runs when page loads
     async componentDidMount() {
         console.log("Homepage loaded");
-        await this.setState({ employeeID: this.props.employeeID })
-        this.getAll()
+        // await this.setState({ employeeID: this.props.employeeID })
+        // this.getAll()
     }
 
     //pulls in all the employee login info
@@ -99,6 +100,8 @@ class Homepage extends React.Component {
         }
 
     }
+    
+   
 
     // renders info to web page
     render() {
@@ -106,6 +109,8 @@ class Homepage extends React.Component {
             return (
                 <div>
                     <Row>
+                        
+  
                     </Row>
                     <Row>
                         <NavItem href='/#/show'>    <Button className="main-buttons">
