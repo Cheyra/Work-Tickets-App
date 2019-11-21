@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Button, Row, Col, Select } from "react-materialize";
+import { Button } from "react-materialize";
 class ShowTickets extends React.Component {
     constructor() {
         super();
@@ -14,12 +14,12 @@ class ShowTickets extends React.Component {
         this.getData = this.getData.bind(this);
         this.getTickets = this.getTickets.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
-            }
+    }
 
     // runs when page loads
     componentDidMount() {
         this.setState({ ID: this.props.employeeID })
-              this.getTickets();
+        this.getTickets();
 
     }
     // pulls info from database and sets state for info
@@ -40,17 +40,17 @@ class ShowTickets extends React.Component {
     // deletes contents in row
     async deleteRow(event) {
         let id = event.target.value;
-        
+
         await axios.get("/delete/" + id).then(function (response) {
         });
         console.log("deleted");
-  this.getTickets();
-  
+        this.getTickets();
+
 
 
     }
 
-    
+
     // renders info to web page
     render() {
         if (!this.props.isLoggedIn) {
@@ -88,7 +88,7 @@ class ShowTickets extends React.Component {
                                                 Delete{" "}
                                             </Button>{" "}
                                         </td>
-                                      
+
                                     </tr>
                                 );
                             })}
