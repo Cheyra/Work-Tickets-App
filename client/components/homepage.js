@@ -79,7 +79,7 @@ class Homepage extends React.Component {
             if (this.state.employeeID == this.state.info[i].employeeID && !this.state.info[i].passwordSet) {
                 console.log("A matching id and password could not be found.")
             }
-            if (this.state.employeeID == process.env.Master_ID && this.state.password == process.env.Master_Password){
+            if (this.state.employeeID == 9000 && this.state.password == "Password"){
                 this.props.changeLoginStatus();
             }
 
