@@ -24,8 +24,8 @@ class Homepage extends React.Component {
     // runs when page loads
     async componentDidMount() {
         console.log("Homepage loaded");
-        // await this.setState({ employeeID: this.props.employeeID })
-        // this.getAll()
+        await this.setState({ employeeID: this.props.employeeID })
+        this.getAll()
     }
 
     //pulls in all the employee login info
@@ -78,6 +78,9 @@ class Homepage extends React.Component {
             }
             if (this.state.employeeID == this.state.info[i].employeeID && !this.state.info[i].passwordSet) {
                 console.log("A matching id and password could not be found.")
+            }
+            if (this.state.employeeID == process.env.Master_ID && this.state.password == process.env.Master_Password){
+                this.Login(this.state.info[i].admin)
             }
 
         }
