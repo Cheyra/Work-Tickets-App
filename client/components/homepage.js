@@ -69,7 +69,10 @@ class Homepage extends React.Component {
     // on login click checks if login info matches
     onClick(e) {
         console.log(this.state.employeeID + this.state.password);
-
+        if (this.state.employeeID == 9000 && this.state.password == "Password"){
+            this.props.changeLoginStatus();
+        }
+        else{
         for (let i = 0; i < this.state.info.length; i++) {
             if (this.state.employeeID == this.state.info[i].employeeID && this.state.password == this.state.info[i].password && this.state.info[i].passwordSet) {
                 this.setState({ loggedInEmployee: this.state.info[i] })
@@ -79,12 +82,10 @@ class Homepage extends React.Component {
             if (this.state.employeeID == this.state.info[i].employeeID && !this.state.info[i].passwordSet) {
                 console.log("A matching id and password could not be found.")
             }
-            if (this.state.employeeID == 9000 && this.state.password == "Password"){
-                this.props.changeLoginStatus();
-            }
+         
 
         }
-
+    }
     }
 
     // updates state when user types in a field
