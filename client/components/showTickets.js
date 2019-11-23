@@ -58,15 +58,16 @@ class ShowTickets extends React.Component {
         } else {
             return (
                 <div>
-
+{/* <div> Welcome {this.state.info.first + " " + this.state.info.last} </div>  */}
                     <table>
                         <thead>
                             <tr>
                                 <th />
+                                <th className="desc-col">Date</th>
                                 <th className="desc-col">Employee ID</th>
-                                <th className="desc-col">First Name</th>
-                                <th className="button-col">Last Name</th>
+                                                      
                                 <th className="button-col">Description</th>
+                                <th className="button-col">Status</th>
 
                             </tr>
                         </thead>
@@ -75,10 +76,10 @@ class ShowTickets extends React.Component {
                                 return (
                                     <tr>
                                         <td className="counterCell" />
+                                        <td className="desc-col">{exp.date}</td>
                                         <td className="desc-col">{exp.employeeID}</td>
-                                        <td className="desc-col">{exp.first}</td>
-                                        <td className="button-col">{exp.last}</td>
                                         <td className="button-col">{exp.description}</td>
+                                        <td className="button-col">{exp.status}</td>
 
 
                                         <td>
