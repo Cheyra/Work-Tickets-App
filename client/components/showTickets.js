@@ -3,22 +3,27 @@ import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Button } from "react-materialize";
+import Toggle from 'react-toggle'
+import "react-toggle/style.css"
 class ShowTickets extends React.Component {
     constructor() {
         super();
         this.state = {
             info: [],
-            ID: 5555
+            ID: 5555,
+            ticketsOpen: true
+            
         };
         // biding this to functions
         this.getData = this.getData.bind(this);
         this.getTickets = this.getTickets.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
+        this.handleOpenChange = this.handleOpenChange.bind(this)
     }
 
     // runs when page loads
     componentDidMount() {
-        this.setState({ ID: this.props.employeeID })
+        this.setState({ ID: this.props.employeeID, ticketsOpen:true })
         this.getTickets();
 
     }
@@ -26,12 +31,12 @@ class ShowTickets extends React.Component {
     async getTickets() {
         let Tickets = "";
 
-        await axios.get("/getAll/" + this.props.employeeID).then(function (response) {
+        await axios.get("/getOpenTickets/" + this.props.employeeID).then(function (response) {
             console.log(response.data);
             Tickets = response.data;
         });
         console.log(Tickets);
-        this.setState({ info: Tickets });
+        this.setState({ info: Tickets,  });
     }
     // pulls initial info
     getData() {
@@ -49,6 +54,21 @@ class ShowTickets extends React.Component {
 
 
     }
+    //updates the database to close a ticket on click
+    handleOpenChange(event) {
+        let id = event.target.value;
+                // let update = { open: false }
+                axios.post("/update/" + id).then(function (response) {
+                    console.log(response)
+                });
+                      
+                this.getTickets();
+        console.log("closed ticket" )
+    }
+    // changes state to show open or closed tickets depending on which button is clicked
+    showTickets(a) {
+        this.setState({ticketsOpen:a})
+    }
 
 
     // renders info to web page
@@ -58,30 +78,40 @@ class ShowTickets extends React.Component {
         } else {
             return (
                 <div>
-{/* <div> Welcome {this.state.info.first + " " + this.state.info.last} </div>  */}
+                    <Button onClick={()=>{this.showTickets(true)}}> Open Tickets </Button>
+                    <Button onClick={()=>{this.showTickets(false)}}> Closed Tickets </Button>
+                    {/* <div> Welcome {this.state.info.first + " " + this.state.info.last} </div>  */}
                     <table>
                         <thead>
                             <tr>
                                 <th />
                                 <th className="desc-col">Date</th>
                                 <th className="desc-col">Employee ID</th>
-                                                      
                                 <th className="button-col">Description</th>
                                 <th className="button-col">Status</th>
+                                <th className="button-col">Close Ticket</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.info.map(exp => {
+                            {this.state.info.filter(exp => exp.open === this.state.ticketsOpen ).map(exp => {
                                 return (
                                     <tr>
                                         <td className="counterCell" />
                                         <td className="desc-col">{exp.date}</td>
                                         <td className="desc-col">{exp.employeeID}</td>
                                         <td className="button-col">{exp.description}</td>
+
                                         <td className="button-col">{exp.status}</td>
 
-
+                                        <td> <label>
+                                        <a href="/#/show">  <Toggle
+                                                defaultChecked={!exp.open}
+                                                onClick={this.handleOpenChange}
+                                                value={exp._id} />
+</a>
+                                        </label>
+                                        </td>
                                         <td>
                                             {" "}
                                             <Button value={exp._id} onClick={this.deleteRow}>
