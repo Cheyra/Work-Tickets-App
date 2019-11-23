@@ -104,6 +104,7 @@ class Homepage extends React.Component {
         }
 
     }
+   
     
    
 
@@ -119,18 +120,12 @@ class Homepage extends React.Component {
                     <Row>
                         <NavItem href='/#/show'>    <Button className="main-buttons">
                             {" "}
-                            Open Tickets{" "}
+                            Tickets{" "}
                         </Button>{" "}
                         </NavItem>
                     </Row>
 
-                    <Row>
-                        <NavItem href='/#/show'>   <Button className="main-buttons" >
-                            {" "}
-                            Closed Tickets{" "}
-                        </Button>{" "}
-                        </NavItem>
-                    </Row>
+              
                     <Row>
                         <NavItem href='/#/add'>  <Button className="main-buttons">
                             {" "}

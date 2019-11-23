@@ -17,6 +17,8 @@ class App extends Component {
     currentEmployeeID: "",
     isLoggedIn: false,
     adminStatus: false,
+    
+    
   }
 
   // runs when page loads
@@ -47,6 +49,7 @@ class App extends Component {
   logOut = () => {
     this.setState({ isLoggedIn: false, currentEmployeeID: "" });
   }
+ 
 
   render() {
     return (
@@ -72,6 +75,7 @@ class App extends Component {
                     changeLoginStatus={this.changeLoginStatus}
                     isLoggedIn={this.state.isLoggedIn}
                     adminStatus={this.state.adminStatus}
+                
                   />
                 )}
               />
@@ -97,6 +101,7 @@ class App extends Component {
                     isLoggedIn={this.state.isLoggedIn}
                     employeeID={this.state.currentEmployeeID}
                     adminStatus={this.state.adminStatus}
+                 
                   />
                 )}
               />
