@@ -19,6 +19,9 @@ router.route('/insert')
   ticket.last = req.body.last;
   ticket.employeeID = req.body.employeeID;
   ticket.description = req.body.description;
+  ticket.date = req.body.date;
+  ticket.open = req.body.open;
+  ticket.status = req.body.status
 
 ticket.save(function(err) {
       if (err)

@@ -6,7 +6,10 @@ var schemaTicket = new Schema({
   first: String,
   last: String,
   employeeID: Number,
-  description: String
+  description: String,
+  date: String,
+  open: Boolean,
+  status: String
   });
 
 module.exports = mongoose.model('Ticket', schemaTicket);

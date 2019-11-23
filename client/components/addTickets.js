@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Button, Textarea } from "react-materialize";
+import moment from 'moment';
 var querystring = require('querystring');
 class AddTickets extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class AddTickets extends React.Component {
       last: '',
       employeeID: '',
       description: '',
+      date: moment().format("DD/MM/YYYY"),
       messageFromServer: '',
 
     }
@@ -27,6 +29,7 @@ class AddTickets extends React.Component {
   componentDidMount() {
     console.log("add")
     this.setState({ employeeID: this.props.employeeID })
+    console.log(this.state.date)
   }
 
 
@@ -43,8 +46,10 @@ class AddTickets extends React.Component {
         first: e.state.first,
         last: e.state.last,
         description: e.state.description,
-        employeeID: e.state.employeeID
-      }), {
+        employeeID: e.state.employeeID,
+        date: moment().format("DD/MM/YYYY") ,
+      open: true,
+    status: "New Request"   }), {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         }
