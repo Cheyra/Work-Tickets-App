@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { Button, Textarea } from "react-materialize";
+import { Redirect } from "react-router-dom";
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 class createLogin extends React.Component {
@@ -12,7 +13,8 @@ class createLogin extends React.Component {
             employeeID: "",
             password: "",
             options: ["WDH", "Administrator", "MGH", "Brigham"],
-            info: ""
+            info: "",
+            changedPassword: false
 
         };
 
@@ -60,7 +62,10 @@ class createLogin extends React.Component {
     // registers employee with a password
     registerEmployee(event) {
         for (let i = 0; i < this.state.info.length; i++) {
-            if (this.state.employeeID == this.state.info[i].employeeID && this.state.facility == this.state.info[i].facility && !this.state.info[i].passwordSet) {
+            if(this.state.password.length<7){
+                console.log("error")
+            }
+           else if (this.state.employeeID == this.state.info[i].employeeID && this.state.facility == this.state.info[i].facility && !this.state.info[i].passwordSet) {
                 console.log(this.state.employeeID)
                 let id = this.state.employeeID;
                 let newName = { password: this.state.password }
@@ -68,6 +73,7 @@ class createLogin extends React.Component {
                     console.log(response)
                 });
                 console.log("edited");
+                this.setState({changedPassword:true})
               
               
               
@@ -87,20 +93,25 @@ class createLogin extends React.Component {
 
     // renders info to web page
     render() {
-
+    if (this.state.changedPassword) {
+            return (<Redirect to={{ pathname: "/homepage" }} />)
+        }
+         else {
         return (
             <div>
                 <Dropdown options={this.state.options} onChange={this._onSelect}  placeholder="Select an option" />
                 <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
                 <Textarea id="password" name="password" value={this.state.password} onChange={this.handleTextChange} label="Please set a password" />
+                <div>Password must be at least 7 characters in length</div>
                 <Button value={this.state.id} onClick={this.registerEmployee}>
-                    {" "}<a href="/#/homepage">
-                        Submit{" "}
-                    </a>
-                </Button>{" "}
+                 
+                        Submit
+                    
+                </Button>
             </div>
         );
-    }
+    };
+}
 }
 
 export default createLogin;
