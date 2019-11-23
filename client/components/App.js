@@ -17,7 +17,7 @@ class App extends Component {
     currentEmployeeID: "",
     isLoggedIn: false,
     adminStatus: false,
-    
+    loginMessage: ""
     
   }
 
@@ -47,9 +47,12 @@ class App extends Component {
 
   // when user logs out it resets global state
   logOut = () => {
-    this.setState({ isLoggedIn: false, currentEmployeeID: "" });
+    this.setState({ isLoggedIn: false, currentEmployeeID: "", loginMessage: "" });
   }
- 
+ // shows user an error message if login fails
+ changeLoginMessage =() =>{
+   this.setState({loginMessage: "Im sorry a matching id and password could not be found."})
+ }
 
   render() {
     return (
@@ -75,6 +78,8 @@ class App extends Component {
                     changeLoginStatus={this.changeLoginStatus}
                     isLoggedIn={this.state.isLoggedIn}
                     adminStatus={this.state.adminStatus}
+                    loginMessage={this.state.loginMessage}
+                    changeLoginMessage ={this.changeLoginMessage}
                 
                   />
                 )}

@@ -14,7 +14,8 @@ class Homepage extends React.Component {
             info: "",
             loggedInEmployee: '',
             admin: "",
-        
+
+
         }
 
         this.onClick = this.onClick.bind(this);
@@ -24,7 +25,14 @@ class Homepage extends React.Component {
     // runs when page loads
     async componentDidMount() {
         console.log("Homepage loaded");
-        await this.setState({ employeeID: this.props.employeeID })
+        await this.setState({
+            employeeID: this.props.employeeID,
+            password: "",
+            info: "",
+            loggedInEmployee: '',
+            admin: "",
+            isLoggedIn: "",
+        })
         this.getAll()
     }
 
@@ -69,23 +77,24 @@ class Homepage extends React.Component {
     // on login click checks if login info matches
     onClick(e) {
         console.log(this.state.employeeID + this.state.password);
-        if (this.state.employeeID == 9000 && this.state.password == "Password"){
+        if (this.state.employeeID == 9000 && this.state.password == "Password") {
             this.props.changeLoginStatus();
         }
-        else{
-        for (let i = 0; i < this.state.info.length; i++) {
-            if (this.state.employeeID == this.state.info[i].employeeID && this.state.password == this.state.info[i].password && this.state.info[i].passwordSet) {
-                this.setState({ loggedInEmployee: this.state.info[i] })
-                this.Login(this.state.info[i].admin)
+        else {
+            for (let i = 0; i < this.state.info.length; i++) {
+                if (this.state.employeeID == this.state.info[i].employeeID && this.state.password == this.state.info[i].password && this.state.info[i].passwordSet) {
+                    this.setState({ loggedInEmployee: this.state.info[i] })
+                    this.Login(this.state.info[i].admin)
+
+                }
+                if (this.state.employeeID !== this.state.info[i].employeeID || this.state.password !== this.state.info[i].password) {
+                    this.props.changeLoginMessage()
+
+                }
+
 
             }
-            if (this.state.employeeID == this.state.info[i].employeeID && !this.state.info[i].passwordSet) {
-                console.log("A matching id and password could not be found.")
-            }
-         
-
         }
-    }
     }
 
     // updates state when user types in a field
@@ -104,9 +113,9 @@ class Homepage extends React.Component {
         }
 
     }
-   
-    
-   
+
+
+
 
     // renders info to web page
     render() {
@@ -114,8 +123,8 @@ class Homepage extends React.Component {
             return (
                 <div>
                     <Row>
-                        
-  
+
+
                     </Row>
                     <Row>
                         <NavItem href='/#/show'>    <Button className="main-buttons">
@@ -125,7 +134,7 @@ class Homepage extends React.Component {
                         </NavItem>
                     </Row>
 
-              
+
                     <Row>
                         <NavItem href='/#/add'>  <Button className="main-buttons">
                             {" "}
@@ -151,11 +160,13 @@ class Homepage extends React.Component {
         else {
             return (
                 <div><h1>Login</h1>
-                    <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
-                    <Textarea id="password" name="password" value={this.state.password} onChange={this.handleTextChange} label="Please enter your password" />
+                    <Textarea id="employeeID" name="employeeID" onChange={this.handleTextChange} label="Please enter your Employee ID" />
+                    <Textarea id="password" name="password" onChange={this.handleTextChange} label="Please enter your password" />
 
                     <Button onClick={this.onClick}>Login</Button>
                     <a href="/#/createlogin"> First time login </a>
+
+                    <div>{this.props.loginMessage} </div>
                 </div>
             )
         }
