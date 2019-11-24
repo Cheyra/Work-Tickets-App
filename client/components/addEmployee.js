@@ -13,7 +13,7 @@ class AddEmployee extends React.Component {
             first: '',
             last: '',
             employeeID: '',
-            admin: true,
+            admin: false,
             messageFromServer: '',
             facility: "",
             options: ["WDH", "Administrator", "MGH", "Brigham"]
@@ -87,10 +87,12 @@ class AddEmployee extends React.Component {
 
         console.log(this.state.first + this.state.last)
     }
+    // when dropdown selection is picked sets the state 
+    //of the facility and checks for admin privileges
     _onSelect(e) {
-        // console.log(e.target.value)
-        console.log("clicked")
-        console.log(e.value)
+        if(e.value==="Administrator"){
+            this.setState({admin:true})
+        }
         this.setState({ facility: e.value })
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import AddLoginTrigger from "./adminComponents/addLogintrigger"
 import { Button, NavItem, Row, Textarea } from "react-materialize";
 
 
@@ -13,18 +14,20 @@ class Homepage extends React.Component {
             password: "",
             info: "",
             loggedInEmployee: '',
-            admin: "",
+            admin: false,
 
 
         }
 
         this.onClick = this.onClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.Login = this.Login.bind(this)
     }
 
     // runs when page loads
     async componentDidMount() {
         console.log("Homepage loaded");
+
         await this.setState({
             employeeID: this.props.employeeID,
             password: "",
@@ -52,27 +55,12 @@ class Homepage extends React.Component {
     async Login(status) {
         await this.props.changeLoginStatus();
         this.props.setLoggedID(this.state.employeeID);
-        this.props.setAdminStatus(status);
-        this.setState({ isLoggedIn: this.props.isLoggedIn });
-        this.setState({ employeeID: this.props.employeeID });
-        this.setAdministration()
+            this.setState({ isLoggedIn: this.props.isLoggedIn });
+        this.setState({ employeeID: this.props.employeeID, loggedInEmployee: this.props.loggedEmployee});
+         
     }
 
-    // checks if logged in user is an administator or not and renders additional (still working on this)
-    // setAdministration() {
-    //     if (this.state.loggedInEmployee.admin) {
-    //         this.render(
-    //             <Row>
-    //                 <NavItem href='/#/addlogin'>  <Button className="main-buttons">
-    //                     {" "}
-    //                     addlogin{" "}
-    //                 </Button>{" "}
-    //                 </NavItem>
-    //             </Row>
-
-    //         )
-    //     }
-    // }
+   
 
     // on login click checks if login info matches
     onClick(e) {
@@ -119,6 +107,7 @@ class Homepage extends React.Component {
 
     // renders info to web page
     render() {
+       
         if (this.props.isLoggedIn) {
             return (
                 <div>
@@ -144,16 +133,11 @@ class Homepage extends React.Component {
                     </Row>
 
 
-                    <Row>
-                        <NavItem href='/#/addlogin'>  <Button className="main-buttons">
-                            {" "}
-                            addlogin{" "}
-                        </Button>{" "}
-                        </NavItem>
-                    </Row>
-
-
-
+<Row><AddLoginTrigger
+admin={this.props.adminStatus}
+/>
+</Row>
+                  
                 </div>
             );
         }

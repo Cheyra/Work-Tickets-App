@@ -67,13 +67,13 @@ class createLogin extends React.Component {
             }
            else if (this.state.employeeID == this.state.info[i].employeeID && this.state.facility == this.state.info[i].facility && !this.state.info[i].passwordSet) {
                 console.log(this.state.employeeID)
-                let id = this.state.employeeID;
-                let newName = { password: this.state.password }
-                axios.post("/updateLogin/" + id, newName).then(function (response) {
+              //  let id = this.state.employeeID;
+            // let newName = { password: this.state.password }
+                axios.post("/updateLogin/" + this.state.employeeID, { password: this.state.password }).then(function (response) {
                     console.log(response)
                 });
                 console.log("edited");
-                this.setState({changedPassword:true})
+              //  this.setState({changedPassword:true})
               
               
               
