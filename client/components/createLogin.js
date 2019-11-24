@@ -15,7 +15,8 @@ class createLogin extends React.Component {
             password: "",
             options: ["WDH", "Administrator", "MGH", "Brigham"],
             info: "",
-            changedPassword: false
+            changedPassword: false,
+            loginMessage: "Password must be at least 7 characters in length"
 
         };
 
@@ -74,7 +75,8 @@ class createLogin extends React.Component {
                     console.log(response)
                 });
                 console.log("edited");
-              //  this.setState({changedPassword:true})
+               this.setState({changedPassword:true})
+               this.setState({loginMessage: "You have successfully registered. Return to the homepage to login."})
               
               
               
@@ -100,12 +102,14 @@ class createLogin extends React.Component {
          else {
         return (
             <div>
-                <Dropdown options={this.state.options} onChange={this._onSelect}  placeholder="Select an option" />
+                                <h1 className="header-box">Register Account</h1>
+
+                <Dropdown options={this.state.options} value={this.state.facility} onChange={this._onSelect}  placeholder="Select an option" />
                 <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
                 <Textarea id="password" name="password" value={this.state.password} onChange={this.handleTextChange} label="Please set a password" />
-                <div>Password must be at least 7 characters in length</div>
+                <div>{this.state.loginMessage}</div>
                 <Button value={this.state.id} onClick={this.registerEmployee} className="button">
-                 
+               
                         Submit
                     
                 </Button>
