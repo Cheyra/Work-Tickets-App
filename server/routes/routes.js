@@ -76,11 +76,14 @@ router.get('/getAllLogin',function(req, res) {
   Login.find()
   .then(dbModel => res.json(dbModel))
  });
-router.get('/getAllLogin/:id',function(req, res) {
+ //retrieves login that matches the employee id
+router.get('/getLogin/:id',function(req, res) {
   //insert query 
-  Login.find({employeeID: req.params.id})
+  Login.findOne({employeeID: req.params.id})
   .then(dbModel => res.json(dbModel))
  });
+ 
+
  // adds to database
 router.route('/insertLogin')
 .post(function(req,res) {
@@ -106,7 +109,7 @@ router.route('/updateLogin/:id')
 
  };
  console.log(doc);
-  Login.update({_id: req.params.id}, doc, function(err, result) {
+  Login.update({employeeID: req.params.id}, doc, function(err, result) {
       if (err){
        return res.send(err);
       }

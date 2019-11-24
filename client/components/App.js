@@ -13,13 +13,18 @@ import { Button } from "react-materialize";
 
 
 class App extends Component {
-  state = {
+  constructor(props) {
+    super();
+    this.state = {
     currentEmployeeID: "",
     isLoggedIn: false,
     adminStatus: false,
-    loginMessage: ""
+    loginMessage: "",
+    loggedEmployee: ""
     
   }
+this.setLoggedID=this.setLoggedID.bind(this)
+}
 
   // runs when page loads
   componentDidMount() {
@@ -29,9 +34,17 @@ class App extends Component {
 
   // set in global logged in state
   setLoggedID = async loggedEmployeeID => {
-    await this.setState({ currentEmployeeID: loggedEmployeeID });
-    console.log(this.state.currentEmployeeID)
-    console.log(this.state.isLoggedIn)
+    let loggedEmployee = "";
+
+    await axios.get("/getLogin/" + loggedEmployeeID).then(function (response) {
+        console.log("test" + response.data.admin);
+        loggedEmployee = response.data;
+
+    });
+    
+    this.setState({ loggedEmployee: loggedEmployee });
+    this.setState({ currentEmployeeID: loggedEmployeeID });
+ 
 
   }
 
@@ -77,9 +90,10 @@ class App extends Component {
                     employeeID={this.state.currentEmployeeID}
                     changeLoginStatus={this.changeLoginStatus}
                     isLoggedIn={this.state.isLoggedIn}
-                    adminStatus={this.state.adminStatus}
+                    adminStatus={this.state.loggedEmployee.admin}
                     loginMessage={this.state.loginMessage}
                     changeLoginMessage ={this.changeLoginMessage}
+                    loggedEmployee={this.state.loggedEmployee}
                 
                   />
                 )}
