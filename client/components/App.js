@@ -9,7 +9,8 @@ import AddTickets from './addTickets';
 import AddEmployee from './addEmployee';
 import ShowTickets from './showTickets';
 import CreateLogin from './createLogin';
-import { Button } from "react-materialize";
+import { Button, Row } from "react-materialize";
+
 
 
 class App extends Component {
@@ -70,11 +71,13 @@ this.setLoggedID=this.setLoggedID.bind(this)
   render() {
     return (
       <div className="App">
-        <a href="/#/homepage"> <Button>Home</Button></a>
-        <Button onClick={this.logOut}>Log Out</Button>
+        <a href="/#/homepage"> <Button className="button">Home</Button></a>
+        <Button onClick={this.logOut} className="button">Log Out</Button>
         <header className="App-header">
-          <h1 className="header"> Ticket Master </h1>
-
+       <div className="header">
+        
+          <h1 > Ticket Master </h1>
+</div>
           <div>
 
             <Switch>

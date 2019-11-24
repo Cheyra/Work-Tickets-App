@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import './App.css';
 import axios from "axios";
 import { Button, Textarea } from "react-materialize";
 import { Redirect } from "react-router-dom";
@@ -103,7 +104,7 @@ class createLogin extends React.Component {
                 <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
                 <Textarea id="password" name="password" value={this.state.password} onChange={this.handleTextChange} label="Please set a password" />
                 <div>Password must be at least 7 characters in length</div>
-                <Button value={this.state.id} onClick={this.registerEmployee}>
+                <Button value={this.state.id} onClick={this.registerEmployee} className="button">
                  
                         Submit
                     

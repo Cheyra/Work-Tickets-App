@@ -6,13 +6,30 @@
 }
 .header{
   color: whitesmoke;
-  background-color: bisque
+  background-color:#5a7dc2;
+  display: block;
+  height: 210px;
+  width: 210px;
+  line-height: 70px;
+  -moz-border-radius: 105px; /* or 50% */
+  border-radius: 105px; /* or 50% */
+   text-align: center;
+  font-size: 2em;
 }
 
-
+.button:focus{background-color:rgb(155, 49, 84)}
+.button:hover {background-color:rgb(236, 89, 141)}
+.button {background-color:rgb(197, 68, 113)}
+.header-box{
+  background-color: whitesmoke;
+  color:#5a7dc2;
+  border-color:#AC3B61;
+  border-style: inset;
+  border: 1px, 1px, 1px, 1px;
+}
 
 .App-header {
-  background-color: #5a7dc2;
+ background-color: #eacdd2;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,6 +55,19 @@
   width:400px;
   height: 80px;
   text-align:center;
+  background-color:#123C69
+}
+.main-buttons:hover{
+  background-color: #BAB2B5
+}
+.main-buttons:active{
+  background-color: rgb(113, 106, 158)
+}
+.delete-button{
+  background-color: rgb(226, 57, 107)
+}
+.delete-button:hover{
+  background-color: rgb(204, 48, 48)
 }
 .button-col {
   width:100px;

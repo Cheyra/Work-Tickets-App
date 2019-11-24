@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
+import './App.css';
 import axios from "axios";
 import { Button, Textarea } from "react-materialize";
 import moment from 'moment';
@@ -93,7 +94,7 @@ class AddTickets extends React.Component {
           <label >Last Name:</label><input type="text" id="last" name="last" value={this.state.last} onChange={this.handleTextChange}></input>
           <label >First Name:</label><input type="text" id="first" name="first" value={this.state.first} onChange={this.handleTextChange}></input>
                 <Textarea id="description" name="description" value={this.state.description} onChange={this.handleTextChange} label="Please enter a description of your problem..." />
-                <Button onClick={this.onClick}><a href="/#/homepage">Save</a></Button>
+                <Button onClick={this.onClick} className="button"><a href="/#/homepage">Save</a></Button>
         </div>
       );
     }

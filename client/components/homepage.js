@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import './App.css';
 import axios from "axios";
 import AddLoginTrigger from "./adminComponents/addLogintrigger"
 import { Button, NavItem, Row, Textarea } from "react-materialize";
@@ -112,7 +113,7 @@ class Homepage extends React.Component {
             return (
                 <div>
                     <Row>
-
+<h1> {"Welcome " + this.props.loggedEmployee.first + " " + this.props.loggedEmployee.last} </h1>
 
                     </Row>
                     <Row>
@@ -125,7 +126,7 @@ class Homepage extends React.Component {
 
 
                     <Row>
-                        <NavItem href='/#/add'>  <Button className="main-buttons">
+                        <NavItem href='/#/add'>  <Button className="main-buttons ">
                             {" "}
                             Create Ticket{" "}
                         </Button>{" "}
@@ -143,11 +144,11 @@ admin={this.props.adminStatus}
         }
         else {
             return (
-                <div><h1>Login</h1>
+                <div><h1 className="header-box">Login</h1>
                     <Textarea id="employeeID" name="employeeID" onChange={this.handleTextChange} label="Please enter your Employee ID" />
                     <Textarea id="password" name="password" onChange={this.handleTextChange} label="Please enter your password" />
 
-                    <Button onClick={this.onClick}>Login</Button>
+                    <Button onClick={this.onClick} className="button">Login</Button>
                     <a href="/#/createlogin"> First time login </a>
 
                     <div>{this.props.loginMessage} </div>
