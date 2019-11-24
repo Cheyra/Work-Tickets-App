@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
+import './App.css';
 import axios from "axios";
 import { Button, Textarea } from "react-materialize";
 import Dropdown from 'react-dropdown'
@@ -110,7 +111,7 @@ class AddEmployee extends React.Component {
                     <Textarea id="facility" name="facility" value={this.state.facility} onChange={this.handleTextChange} label="Please enter a the facility Name" />
                     <Dropdown options={this.state.options} onChange={this._onSelect} placeholder="Select an option" />
 
-                    <Button onClick={this.onClick}><a href="/#/homepage">Add New Employee</a></Button>
+                    <Button onClick={this.onClick} className="button"><a href="/#/homepage">Add New Employee</a></Button>
 
 
 

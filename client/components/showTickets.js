@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
+import './App.css';
 import axios from "axios";
 import { Button } from "react-materialize";
 import Toggle from 'react-toggle'
@@ -78,8 +79,8 @@ class ShowTickets extends React.Component {
         } else {
             return (
                 <div>
-                    <Button onClick={()=>{this.showTickets(true)}}> Open Tickets </Button>
-                    <Button onClick={()=>{this.showTickets(false)}}> Closed Tickets </Button>
+                    <Button onClick={()=>{this.showTickets(true)}} className="button"> Open Tickets </Button>
+                    <Button onClick={()=>{this.showTickets(false)}} className="button"> Closed Tickets </Button>
                     {/* <div> Welcome {this.state.info.first + " " + this.state.info.last} </div>  */}
                     <table>
                         <thead>
@@ -114,7 +115,7 @@ class ShowTickets extends React.Component {
                                         </td>
                                         <td>
                                             {" "}
-                                            <Button value={exp._id} onClick={this.deleteRow}>
+                                            <Button value={exp._id} onClick={this.deleteRow} className="delete-button">
                                                 {" "}
                                                 Delete{" "}
                                             </Button>{" "}
