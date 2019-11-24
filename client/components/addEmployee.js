@@ -109,7 +109,7 @@ class AddEmployee extends React.Component {
                     <label >First Name:</label><input type="text" id="first" name="first" value={this.state.first} onChange={this.handleTextChange}></input>
                     <Textarea id="employeeID" name="employeeID" value={this.state.employeeID} onChange={this.handleTextChange} label="Please enter your Employee ID" />
                     <Textarea id="facility" name="facility" value={this.state.facility} onChange={this.handleTextChange} label="Please enter a the facility Name" />
-                    <Dropdown options={this.state.options} onChange={this._onSelect} placeholder="Select an option" />
+                    <Dropdown value={this.state.facility} options={this.state.options} onChange={this._onSelect} placeholder="Select an option" />
 
                     <Button onClick={this.onClick} className="button"><a href="/#/homepage">Add New Employee</a></Button>
 

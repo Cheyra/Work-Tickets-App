@@ -76,7 +76,7 @@ this.setLoggedID=this.setLoggedID.bind(this)
         <header className="App-header">
        <div className="header">
         
-          <h1 > Ticket Master </h1>
+          <h1 > Ticket M@ster </h1>
 </div>
           <div>
 

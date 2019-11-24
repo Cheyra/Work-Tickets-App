@@ -4,22 +4,45 @@
 .hello{
   color:blue;
 }
-.header{
+.header{ z-index: 2;
   color: whitesmoke;
   background-color:#5a7dc2;
+  font-size: 30px !important;
+  font-family: 'Cinzel', serif;
   display: block;
-  height: 210px;
-  width: 210px;
-  line-height: 70px;
-  -moz-border-radius: 105px; /* or 50% */
-  border-radius: 105px; /* or 50% */
+  height: 270px;
+  width: 272px;
+  line-height: 60px;
+  -moz-border-radius: 130px; /* or 50% */
+  border-radius: 130px; /* or 50% */
    text-align: center;
-  font-size: 2em;
+  /* font-size: 1em; */
+  border-color:#EEE2DC;
+  border-style: outset;
+  border: 2px, 2px, 2px, 2px;
+}
+.first-login-link{
+  text-decoration: underline;
+  color: #5a7dc2;
+  font-size: 20px;
+
+}
+.first-login-link:hover{
+  color: #8aa9e9;
 }
 
-.button:focus{background-color:rgb(155, 49, 84)}
-.button:hover {background-color:rgb(236, 89, 141)}
-.button {background-color:rgb(197, 68, 113)}
+.button:focus{
+  background-color:rgb(155, 49, 84)
+}
+.button:hover {
+  background-color:rgb(236, 89, 141)
+}
+.button {
+  background-color:rgb(197, 68, 113);
+  border-color:#EEE2DC;
+  border-style: outset;
+  border: 2px, 2px, 2px, 2px;
+}
 .header-box{
   background-color: whitesmoke;
   color:#5a7dc2;
@@ -55,13 +78,17 @@
   width:400px;
   height: 80px;
   text-align:center;
-  background-color:#123C69
+  background-color:#123C69;
+  border-color:#EEE2DC;
+  border-style: outset;
+  border: 2px, 2px, 2px, 2px;
 }
 .main-buttons:hover{
   background-color: #BAB2B5
 }
 .main-buttons:active{
   background-color: rgb(113, 106, 158)
+  
 }
 .delete-button{
   background-color: rgb(226, 57, 107)

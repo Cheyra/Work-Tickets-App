@@ -149,7 +149,7 @@ admin={this.props.adminStatus}
                     <Textarea id="password" name="password" onChange={this.handleTextChange} label="Please enter your password" />
 
                     <Button onClick={this.onClick} className="button">Login</Button>
-                    <a href="/#/createlogin"> First time login </a>
+                    <a href="/#/createlogin" className="first-login-link"> First time login </a>
 
                     <div>{this.props.loginMessage} </div>
                 </div>
