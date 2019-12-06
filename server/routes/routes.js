@@ -21,7 +21,8 @@ router.route('/insert')
   ticket.description = req.body.description;
   ticket.date = req.body.date;
   ticket.open = req.body.open;
-  ticket.status = req.body.status
+  ticket.status = req.body.status;
+  ticket.problemType = req.body.problemType;
 
 ticket.save(function(err) {
       if (err)
@@ -35,6 +36,19 @@ router.route('/update/:id')
 .post(function(req, res) {
  const doc = {
   open: false
+ };
+ console.log(doc);
+  Ticket.update({_id: req.params.id}, doc, function(err) {
+      if (err)
+        res.send(err);
+      res.send('Ticket successfully updated!');
+  });
+});
+// updates existing entry in database
+router.route('/updateStatus/:id')
+.post(function(req, res) {
+ const doc = {
+  status: req.body.status
  };
  console.log(doc);
   Ticket.update({_id: req.params.id}, doc, function(err) {
@@ -59,8 +73,9 @@ router.get('/getOpenTickets/:id',function(req, res) {
  Ticket.find({employeeID: req.params.id})
  .then(dbModel => res.json(dbModel))
 });
+
 // can be modified to retrieve all entries that match a certain query
-router.get('/getAll',function(req, res) {
+router.get('/getAllTickets',function(req, res) {
  //insert query 
  Ticket.find()
  .then(dbModel => res.json(dbModel))

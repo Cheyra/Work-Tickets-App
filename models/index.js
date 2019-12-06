@@ -9,7 +9,8 @@ var schemaTicket = new Schema({
   description: String,
   date: String,
   open: Boolean,
-  status: String
+  status: String,
+  problemType: String
   });
 
 module.exports = mongoose.model('Ticket', schemaTicket);
