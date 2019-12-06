@@ -87,11 +87,9 @@ class createLogin extends React.Component {
         
 
     }
+    //sets state when dropdown selection changes
     _onSelect(e) {
-        // console.log(e.target.value)
-        console.log("clicked")
-        console.log(e.value)
-        this.setState({facility: e.value})
+            this.setState({facility: e.value})
             }
 
     // renders info to web page

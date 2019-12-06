@@ -110,6 +110,7 @@ this.setLoggedID=this.setLoggedID.bind(this)
                     isLoggedIn={this.state.isLoggedIn}
                     employeeID={this.state.currentEmployeeID}
                     adminStatus={this.state.adminStatus}
+                    loggedEmployee={this.state.loggedEmployee}
                   />
                 )}
               />
@@ -123,7 +124,7 @@ this.setLoggedID=this.setLoggedID.bind(this)
                     isLoggedIn={this.state.isLoggedIn}
                     employeeID={this.state.currentEmployeeID}
                     adminStatus={this.state.adminStatus}
-                 
+                 loggedEmployee ={this.state.loggedEmployee}
                   />
                 )}
               />
