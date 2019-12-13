@@ -15,7 +15,7 @@
     "mongoose": "^5.7.12",
     "node": "v8.11.3",
     "nodemon": "^1.19.4",
-    "npm": "5.6.0",
+    "npm": "6.13.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-dropdown": "^1.6.4",
